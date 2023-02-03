@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws CalcException {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Для выхода нажмите Enter");
         String expression = scanner.nextLine();
@@ -13,7 +13,7 @@ public class Main {
         }
     }
 
-    public static String calc(String input) throws CalcException {
+    public static String calc(String input) {
         // строка разбивается пробелами на части, эти части записываются в массив parts[]
         String[] parts = input.split(" ");
 
@@ -30,14 +30,13 @@ public class Main {
         List<String> ArabOperands = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
         List<String> RomanOperands = Arrays.asList("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X");
 
-        Converter converter = new Converter();
-
         // если операнды арабские
         if (ArabOperands.contains(a) && ArabOperands.contains(b)) {
             return calculate(a, operator, b);
         }
         // если операнды римские
         else if (RomanOperands.contains(a) && RomanOperands.contains(b)) {
+            Converter converter = new Converter();
             String arabResult = calculate(converter.convertToArab(a), operator, converter.convertToArab(b));
             // если результат с римскимим меньше 1
             if (Integer.parseInt(arabResult) < 0) {
@@ -60,7 +59,7 @@ public class Main {
     }
 
     // выполнение операции
-    static String calculate(String operand1, String operator, String operand2) throws CalcException {
+    static String calculate(String operand1, String operator, String operand2) {
         int a = Integer.parseInt(operand1);
         int b = Integer.parseInt(operand2);
         int result = switch (operator) {

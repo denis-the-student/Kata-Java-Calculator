@@ -1,5 +1,8 @@
-class CalcException extends Exception {
-    CalcException(String description) {
-        System.out.println(description);
+class CalcException extends RuntimeException {
+    CalcException(String message) {
+        super(message);
+    }
+    CalcException(String message, Throwable cause) {
+        super(message, cause);
     }
 }
